@@ -49,7 +49,7 @@ export default function App() {
     const getPrayersdata = async () => {
       try {
         const { data: response } = await axios.get(
-          `http://api.aladhan.com/v1/calendarByCity/` +
+          `https://api.aladhan.com/v1/calendarByCity/` +
             tahun +
             `/` +
             bulan +
