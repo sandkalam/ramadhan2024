@@ -13,7 +13,7 @@ import Jadwal from "./components/Jadwal";
 import umalqura from "@umalqura/core";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Track from "./components/Track";
+// import Track from "./components/Track";
 import Customdata from "./data/data";
 import imgHeader from "./assets/header.png";
 import Footer from "./components/Footer";
@@ -46,7 +46,7 @@ export default function App() {
             tahun +
             `/` +
             bulan +
-            `?city=tangerang&country=id&state=banten&method=20`
+            `?city=Tangerang&country=id&state=Banten&method=20`
         );
         setPraytime(response);
       } catch (error) {
@@ -109,9 +109,6 @@ export default function App() {
         id="clock"
       >
         <div className="container mx-auto grid grid-cols-1 gap-4 p-4 justify-items-center items-center text-center">
-          {/* <div id="clock" className="flex justify-center content-center w-1/2">
-            <Clock />
-          </div> */}
           <div className="flex justify-center content-center flex-col">
             <h1 className="text-xl md:text-4xl uppercase text-white font-bold font-mono">
               {time}
@@ -133,7 +130,9 @@ export default function App() {
             Waktu Solat dan Matahari:
           </h1>
           <p className="text-white uppercase font-l fonst-bold">
-            Wilayah Jakarta
+            {/* {praytime.data?.[t]?.meta.latitude}|
+            {praytime.data?.[t]?.meta.longitude} */}
+            Wilayah Tangerang dan Sekitarnya
           </p>
           <table className="table table-auto border border-slate-400 p-4 text-white text-sm rounded-md border-separate border-spacing-2">
             <thead className="rounded-md">
@@ -156,7 +155,6 @@ export default function App() {
             </tbody>
           </table>
         </div>
-        {/* </div> */}
       </section>
       {/* Countdown */}
       <section
@@ -262,6 +260,8 @@ export default function App() {
           <h1 className="mx-3">Jelajah</h1>
         </div>
         <h1>On Progress..</h1>
+        {/* https://marifa.org/ */}
+        {/* https://ilm.islamic.network/items/quotes/71?fields=text,reference,translations.*,author.name */}
         {/* <Track /> */}
       </section>
 

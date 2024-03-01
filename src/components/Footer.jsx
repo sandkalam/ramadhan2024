@@ -22,7 +22,7 @@ export default function Footer() {
           <br />
           Merdeka sejak 1945.
         </p>
-        <p>Sumber : aladhan.com | Kementerian Agama Republik Indonesia</p>
+        <p>Sumber : aladhan.com | www.islamic.network/</p>
       </aside>
       <nav>
         <h6 className="footer-title">Social</h6>
