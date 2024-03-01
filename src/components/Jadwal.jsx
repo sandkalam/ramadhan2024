@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 export default function Jadwal() {
   const [dHijri, setDHijri] = useState([]);
@@ -40,7 +41,14 @@ export default function Jadwal() {
           </thead>
           <tbody>
             {Object.keys(dHijri).map((key, index) => (
-              <tr key={index} className="hover">
+              <tr
+                key={index}
+                className={
+                  moment(dHijri[index].date) == moment()
+                    ? "bg-gray-100"
+                    : "bg-white hover"
+                }
+              >
                 <th>{index + 1}</th>
                 <td>{dHijri[index].date.readable}</td>
                 <td>{removeWIB(dHijri[index].timings.Imsak)}</td>
