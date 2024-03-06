@@ -18,7 +18,7 @@ import "aos/dist/aos.css";
 import Customdata from "./data/data";
 import imgHeader from "./assets/header.png";
 import CheckProgress from "./components/Features";
-import DisqusComments from "./components/DisqusF";
+// import DisqusComments from "./components/DisqusF";
 import Footer from "./components/Footer";
 
 // moment setup
@@ -93,7 +93,10 @@ export default function App() {
               href="#calendar"
               className="flex justify-start content-start mt-3"
             >
-              <button id="btncal" className="btn bg-white shadow-md">
+              <button
+                id="btncal"
+                className="btn bg-white shadow-md  print:hidden"
+              >
                 Lihat Jadwal
               </button>
             </a>
@@ -108,7 +111,7 @@ export default function App() {
       </header>
       {/* Jam */}
       <section
-        className="bg-[#273036] py-4 h-[30rem] flex items-center content-center flex-col"
+        className="bg-[#273036] py-4 h-[30rem] flex items-center content-center flex-col  print:hidden"
         id="clock"
       >
         <div className="container mx-auto grid grid-cols-1 gap-4 p-4 justify-items-center items-center text-center">
@@ -162,7 +165,7 @@ export default function App() {
       {/* Countdown */}
       <section
         id="countdown"
-        className="container grid grid-cols-1 items-center justify-items-center mt-3 p-3 overflow-x-auto mx-auto"
+        className="container grid grid-cols-1 items-center justify-items-center mt-3 p-3 overflow-x-auto mx-auto  print:hidden"
       >
         <CountD />
         <p className="uppercase text-xl font-bold font-mono p-4">
@@ -244,7 +247,7 @@ export default function App() {
       {/* jelajah */}
       <section
         data-aos="fade-up"
-        className="print:hidden sm:container my-4 grid grid-cols-1 items-center justify-items-start mx-auto mt-2 bg-white shadow-sm  rounded-md w-100 overlay-scroll"
+        className=" sm:container my-4 grid grid-cols-1 items-center justify-items-start mx-auto mt-2 bg-white shadow-sm  rounded-md w-100 overlay-scroll"
       >
         <div className="bg-[#273036] my-4 rounded-md text-xl font-bold  px-4 py-2 mx-4  text-white flex  justify-between items-center">
           <svg
@@ -261,7 +264,7 @@ export default function App() {
               d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
             />
           </svg>
-          <h1 className="mx-3">Lacak</h1>
+          <h1 className="mx-3 print:hidden">Lacak</h1>
         </div>
         {/* <h1>On Progress..</h1> */}
         <CheckProgress />
@@ -269,9 +272,10 @@ export default function App() {
         {/* https://ilm.islamic.network/items/quotes/71?fields=text,reference,translations.*,author.name */}
         {/* <Track /> */}
       </section>
-      <section className="container grid grid-cols-1 items-center justify-items-center">
+      {/* <section className="container grid grid-cols-1 items-center justify-items-center">
         <DisqusComments />
-      </section>
+      </section> */}
+      {/* section for paraf guru and name */}
 
       {/* footer */}
       <Footer />

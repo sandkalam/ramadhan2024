@@ -72,7 +72,24 @@ export default function CheckProgress() {
   return (
     <div className="overflow-x-auto w-full shadow-md  sm:rounded-lg">
       <h1 className="text-3xl font-bold m-5">Ramadhan Progress</h1>
-      <table className="table table-auto shadow-md">
+      <div className="stats stats-vertical w-full sm:flex mt-5 shadow-md rounded">
+        <div className="stat">
+          <div className="stat-title">Puasa</div>
+          <div className="stat-value">{totalPuasa}</div>
+          <div className="stat-percentage">{puasaPercentage.toFixed(2)}%</div>
+        </div>
+        <div className="stat">
+          <div className="stat-title">Tarawih</div>
+          <div className="stat-value">{totalTarawih}</div>
+          <div className="stat-percentage">{tarawihPercentage.toFixed(2)}%</div>
+        </div>
+        <div className="stat">
+          <div className="stat-title">Baca Quran</div>
+          <div className="stat-value">{totalBquran}</div>
+          <div className="stat-percentage">{bquranPercentage.toFixed(2)}%</div>
+        </div>
+      </div>
+      <table className="table table-auto shadow-md mt-4 print:hidden">
         <thead>
           <tr>
             <th>Hari Ke</th>
@@ -124,7 +141,7 @@ export default function CheckProgress() {
           ))}
         </tbody>
       </table>
-      <div className="stats stats-vertical w-full sm:flex mt-5 shadow-md rounded">
+      <div className="stats stats-vertical w-full sm:flex mt-5 shadow-md rounded print:hidden">
         <div className="stat">
           <div className="stat-title">Puasa</div>
           <div className="stat-value">{totalPuasa}</div>
