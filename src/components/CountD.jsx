@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import countdown from "countdown";
 
 export default function CountD() {
-  // Ramadhan is March 10, 2024
+  // Ramadhan is March 12, 2024 (NU)
   // make countdown to ramadhan using countdownjs and separete  the days, hours, minutes, seconds
   const [days, setDays] = useState(null);
   const [hours, setHours] = useState(null);
@@ -10,7 +10,7 @@ export default function CountD() {
   const [seconds, setSeconds] = useState(null);
 
   useEffect(() => {
-    const ramadhan = new Date(2024, 3, 10);
+    const ramadhan = new Date(2024, 3, 12); //hari selasa
     const tm = setInterval(() => {
       setDays(countdown(ramadhan).days);
       setHours(countdown(ramadhan).hours);
