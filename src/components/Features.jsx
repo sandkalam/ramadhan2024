@@ -15,7 +15,7 @@ export default function CheckProgress() {
   );
 
   // Initialize daysOfRamadhan to 0
-  const [totalRamadhan, setTotalRamadhan] = useState(30);
+  const [totalRamadhan, setTotalRamadhan] = useState(29);
 
   // Initialize total counts to 0
   const [puasaPercentage, setPuasaPercentage] = useState(0);
@@ -101,10 +101,10 @@ export default function CheckProgress() {
         <tbody>
           {Array.from({ length: totalRamadhan }, (_, i) => (
             <tr key={i} className="hover">
-              <td>Hari Ke-{i + 1}</td>
+              <td className="text-3xl font-bold">Hari Ke-{i + 1}</td>
               <td className="flex justify-between flex-col sm:w-2/3 w-full items-end ">
                 <label className="label cursor-pointer">
-                  <span className="label-text">Puasa</span>
+                  <span className="label-text text-xl ">Puasa</span>
                   <input
                     type="checkbox"
                     className="checkbox m-3"
@@ -115,7 +115,7 @@ export default function CheckProgress() {
                   />
                 </label>
                 <label className="label cursor-pointer">
-                  <span className="label-text">Tarawih</span>
+                  <span className="label-text  text-xl ">Tarawih</span>
                   <input
                     type="checkbox"
                     className="checkbox m-3"
@@ -126,7 +126,7 @@ export default function CheckProgress() {
                   />
                 </label>
                 <label className="label cursor-pointer">
-                  <span className="label-text">Baca Quran</span>
+                  <span className="label-text text-xl ">Baca Quran</span>
                   <input
                     type="checkbox"
                     className="checkbox m-3"

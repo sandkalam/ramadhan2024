@@ -6,7 +6,7 @@ import "moment/dist/locale/id"; // locale for Indonesia
 // add use react functions
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+// import axios from "axios";
 import Kartu from "./components/Kartu";
 import Carous from "./components/Carous";
 //import CountD from "./components/CountD";
@@ -21,19 +21,22 @@ import CheckProgress from "./components/Features";
 // import DisqusComments from "./components/DisqusF";
 import Footer from "./components/Footer";
 
+// import data kota
+// import kota from "./data/kota";
+
 // moment setup
 
 // fetch data from api
 // http://api.aladhan.com/v1/calendarByCity/:year/:month?city=tangerang&country=id&state=banten
 
-const tahun = moment().format("YYYY");
-const bulan = moment().format("MM");
-const tanggal = moment().format("DD");
-let t = tanggal - 1;
+// const tahun = moment().format("YYYY");
+// const bulan = moment().format("MM");
+// const tanggal = moment().format("DD");
+// let t = tanggal - 1;
 // ---------------------------
 export default function App() {
   // get current time using momentjs and use Effect
-  const [praytime, setPraytime] = useState({ data: [] });
+  // const [praytime, setPraytime] = useState({ data: [] });
   const [time, setTime] = useState(moment().format("hh:mm:ss"));
   const [date, setDate] = useState(moment().format("dddd, DD MMMM YYYY"));
   const [hijri, setHijri] = useState(umalqura().format("d MMMM, yyyy") + "H");
@@ -42,22 +45,22 @@ export default function App() {
   useEffect(() => {
     setData(Customdata);
 
-    const getPrayersdata = async () => {
-      try {
-        const { data: response } = await axios.get(
-          `https://api.aladhan.com/v1/calendarByCity/` +
-            tahun +
-            `/` +
-            bulan +
-            `?city=Tangerang&country=id&state=Banten&method=20`
-        );
-        setPraytime(response);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
+    // const getPrayersdata = async () => {
+    //   try {
+    //     const { data: response } = await axios.get(
+    //       `https://api.aladhan.com/v1/calendarByCity/` +
+    //         tahun +
+    //         `/` +
+    //         bulan +
+    //         `?city=Tangerang&country=id&state=Banten&method=20`
+    //     );
+    //     setPraytime(response);
+    //   } catch (error) {
+    //     console.error(error.message);
+    //   }
+    // };
 
-    getPrayersdata();
+    // getPrayersdata();
     AOS.init();
 
     const timer = setInterval(() => {
@@ -69,13 +72,13 @@ export default function App() {
     return function cleanup() {
       clearInterval(timer);
     };
-  }, [data]);
+  }, []);
   // waktu solat
-  let fajr = praytime.data?.[t]?.timings?.Fajr;
-  let dzuhur = praytime.data?.[t]?.timings?.Dhuhr;
-  let asar = praytime.data?.[t]?.timings?.Asr;
-  let magrib = praytime.data?.[t]?.timings?.Maghrib;
-  let isya = praytime.data?.[t]?.timings?.Isha;
+  // let fajr = praytime.data?.[t]?.timings?.Fajr;
+  // let dzuhur = praytime.data?.[t]?.timings?.Dhuhr;
+  // let asar = praytime.data?.[t]?.timings?.Asr;
+  // let magrib = praytime.data?.[t]?.timings?.Maghrib;
+  // let isya = praytime.data?.[t]?.timings?.Isha;
 
   return (
     <>
@@ -111,7 +114,7 @@ export default function App() {
       </header>
       {/* Jam */}
       <section
-        className="bg-[#273036] py-4 h-[30rem] flex items-center content-center flex-col  print:hidden"
+        className="bg-[#273036] py-4 flex items-center content-center flex-col  print:hidden"
         id="clock"
       >
         <div className="container mx-auto grid grid-cols-1 gap-4 p-4 justify-items-center items-center text-center">
@@ -122,14 +125,14 @@ export default function App() {
             <h2 className="text-l md:text-2xl uppercase text-white font-mono">
               {date}
             </h2>
-            <h2 className="text-l md:text-2xl uppercase text-white font-mono">
+            <h2 className="text-l hidden md:text-2xl uppercase text-white font-mono">
               {hijri}
             </h2>
           </div>
         </div>
         <div
           data-aos="fade-up"
-          className="container grid grid-cols-1 items-center justify-items-center overflow-x-auto"
+          className="container hidden grid-cols-1 items-center justify-items-center overflow-x-auto"
         >
           {/* time before pray */}
           <h1 className="py-4 uppercase text-white mt-3 font-xl font-bold">
@@ -138,12 +141,12 @@ export default function App() {
           <p className="text-white uppercase font-l fonst-bold">
             {/* {praytime.data?.[t]?.meta.latitude}|
             {praytime.data?.[t]?.meta.longitude} */}
-            Wilayah Tangerang dan Sekitarnya
+            Wilayah Kota Tangerang
           </p>
           <table className="table table-auto border border-slate-400 p-4 text-white text-sm rounded-md border-separate border-spacing-2">
             <thead className="rounded-md">
               <tr className="bg-[#DA604B] text-white uppercase text-center">
-                <th className="p-2  rounded-md">Fajr</th>
+                <th className="p-2  rounded-md">Subuh</th>
                 <th className="p-2  rounded-md">Dzuhur</th>
                 <th className="p-2  rounded-md">Asar</th>
                 <th className="p-2  rounded-md">Magrib</th>
@@ -152,11 +155,11 @@ export default function App() {
             </thead>
             <tbody>
               <tr className="border-1">
-                <td className="p-2 text-center">{fajr}</td>
-                <td className="p-2 text-center">{dzuhur}</td>
-                <td className="p-2 text-center">{asar}</td>
-                <td className="p-2 text-center">{magrib}</td>
-                <td className="p-2 text-center">{isya}</td>
+                <td className="p-2 text-center">{}</td>
+                <td className="p-2 text-center">{}</td>
+                <td className="p-2 text-center">{}</td>
+                <td className="p-2 text-center">{}</td>
+                <td className="p-2 text-center">{}</td>
               </tr>
             </tbody>
           </table>
@@ -167,7 +170,6 @@ export default function App() {
         id="countdown"
         className="hidden container grid-cols-1 items-center justify-items-center mt-3 p-3 overflow-x-auto mx-auto  print:hidden"
       >
-        <CountD />
         <p className="uppercase text-xl font-bold font-mono p-4">
           Menuju Puasa Ramadhan
         </p>
@@ -241,7 +243,7 @@ export default function App() {
 
           <h1 className="mx-3">Kalender</h1>
         </div>
-        <h1 className="text-3xl font-bold m-5">Ramadhan 1445 H | 2024 M</h1>
+
         <Jadwal />
       </section>
       {/* jelajah */}
@@ -264,7 +266,7 @@ export default function App() {
               d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
             />
           </svg>
-          <h1 className="mx-3 print:hidden">Lacak</h1>
+          <h1 className="mx-3 print:hidden">Aktivitas</h1>
         </div>
         {/* <h1>On Progress..</h1> */}
         <CheckProgress />

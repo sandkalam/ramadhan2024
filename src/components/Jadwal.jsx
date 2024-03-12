@@ -1,28 +1,35 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+/* eslint-disable react/react-in-jsx-scope */
+// import axios from "axios";
+import { useState } from "react";
 import moment from "moment";
+import kota from "../data/kota";
+// import kabupaten from "../data/kabupaten";
 
 export default function Jadwal() {
-  const [dHijri, setDHijri] = useState([]);
+  // const [dHijri, setDHijri] = useState([]);
 
-  useEffect(() => {
-    const getDateHijri = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.aladhan.com/v1/hijriCalendarByCity/1445/9?city=Tangerang&country=Indonesia&method=20"
-        );
-        setDHijri(response.data.data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    getDateHijri();
-  }, []);
-  const removeWIB = (time) => {
-    return time.split(" (WIB)")[0];
-  };
+  const [kalkot, setKalkot] = useState([kota]);
+  // const [kalkab, setKalkab] = useState([kabupaten]);
+  // useEffect(() => {
+  //   const getDateHijri = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://api.aladhan.com/v1/hijriCalendarByCity/1445/9?city=Tangerang&country=Indonesia&method=20"
+  //       );
+  //       setDHijri(response.data.data);
+  //     } catch (error) {
+  //       console.error(error.message);
+  //     }
+  //   };
+  //   getDateHijri();
+  // }, []);
+  // const removeWIB = (time) => {
+  //   return time.split(" (WIB)")[0];
+  // };
+
   return (
     <>
+      <h1 className="text-3xl font-bold m-5">Ramadhan 1445 H | 2024 M</h1>
       <div className="overflow-x-auto w-full shadow-md  sm:rounded-lg">
         <table className="table text-center">
           {/* head */}
@@ -31,8 +38,7 @@ export default function Jadwal() {
               <th>NO</th>
               <th>TANGGAL</th>
               <th>IMSAK</th>
-              <th>FAJR</th>
-              <th>TERBIT</th>
+              <th>SUBUH</th>
               <th>DZUHUR</th>
               <th>ASAR</th>
               <th>MAGRIB</th>
@@ -40,26 +46,24 @@ export default function Jadwal() {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(dHijri).map((key, index) => (
+            {Object.keys(kalkot[0]).map((key, index) => (
               <tr
                 key={index}
                 className={
-                  moment(dHijri[index].date) == moment()
+                  moment().add(index, "days").format("YYYY-MM-DD") ==
+                  moment().format("YYYY-MM-DD")
                     ? "bg-gray-100"
                     : "bg-white hover"
                 }
               >
-                <th>{index + 1}</th>
-                <td>{dHijri[index].date.readable}</td>
-                <td>{removeWIB(dHijri[index].timings.Imsak)}</td>
-                <td>{removeWIB(dHijri[index].timings.Fajr)}</td>
-                <td>{removeWIB(dHijri[index].timings.Sunrise)}</td>
-                <td>{removeWIB(dHijri[index].timings.Dhuhr)}</td>
-                <td>{removeWIB(dHijri[index].timings.Asr)}</td>
-                <td className="bg-gray-100">
-                  {removeWIB(dHijri[index].timings.Maghrib)}
-                </td>
-                <td>{removeWIB(dHijri[index].timings.Isha)}</td>
+                <th>{kalkot[0][index].NO}</th>
+                <td>{moment().add(index, "days").format("ll")}</td>
+                <td>{kalkot[0][index].IMSAK}</td>
+                <td>{kalkot[0][index].SUBUH}</td>
+                <td>{kalkot[0][index].ZUHUR}</td>
+                <td>{kalkot[0][index].ASAR}</td>
+                <td className="bg-gray-100">{kalkot[0][index].MAGRIB}</td>
+                <td>{kalkot[0][index].ISYA}</td>
               </tr>
             ))}
             {/* row 1 */}

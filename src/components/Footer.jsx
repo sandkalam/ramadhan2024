@@ -18,11 +18,11 @@ export default function Footer() {
         </svg>
 
         <p>
-          Sandy Kalamuddin.
+          Sandy Kalamuddin a.k.a sandkalam
           <br />
           Merdeka sejak 1945.
         </p>
-        <p>Sumber : aladhan.com | www.islamic.network/</p>
+        <p>Sumber : bimasislam.kemenag.go.id</p>
       </aside>
       <nav>
         <h6 className="footer-title">Social</h6>
