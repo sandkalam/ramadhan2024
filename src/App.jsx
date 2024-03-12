@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Kartu from "./components/Kartu";
 import Carous from "./components/Carous";
-import CountD from "./components/CountD";
+//import CountD from "./components/CountD";
 import Jadwal from "./components/Jadwal";
 import umalqura from "@umalqura/core";
 import AOS from "aos";
@@ -165,7 +165,7 @@ export default function App() {
       {/* Countdown */}
       <section
         id="countdown"
-        className="container grid grid-cols-1 items-center justify-items-center mt-3 p-3 overflow-x-auto mx-auto  print:hidden"
+        className="hidden container grid-cols-1 items-center justify-items-center mt-3 p-3 overflow-x-auto mx-auto  print:hidden"
       >
         <CountD />
         <p className="uppercase text-xl font-bold font-mono p-4">
