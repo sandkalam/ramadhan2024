@@ -11,7 +11,6 @@ import Kartu from "./components/Kartu";
 import Carous from "./components/Carous";
 //import CountD from "./components/CountD";
 import Jadwal from "./components/Jadwal";
-import umalqura from "@umalqura/core";
 import AOS from "aos";
 import "aos/dist/aos.css";
 // import Track from "./components/Track";
@@ -21,64 +20,26 @@ import CheckProgress from "./components/Features";
 // import DisqusComments from "./components/DisqusF";
 import Footer from "./components/Footer";
 
-// import data kota
-// import kota from "./data/kota";
-
-// moment setup
-
-// fetch data from api
-// http://api.aladhan.com/v1/calendarByCity/:year/:month?city=tangerang&country=id&state=banten
-
-// const tahun = moment().format("YYYY");
-// const bulan = moment().format("MM");
-// const tanggal = moment().format("DD");
-// let t = tanggal - 1;
 // ---------------------------
 export default function App() {
-  // get current time using momentjs and use Effect
-  // const [praytime, setPraytime] = useState({ data: [] });
   const [time, setTime] = useState(moment().format("hh:mm:ss"));
   const [date, setDate] = useState(moment().format("dddd, DD MMMM YYYY"));
-  const [hijri, setHijri] = useState(umalqura().format("d MMMM, yyyy") + "H");
   const [data, setData] = useState([]);
 
   useEffect(() => {
     setData(Customdata);
 
-    // const getPrayersdata = async () => {
-    //   try {
-    //     const { data: response } = await axios.get(
-    //       `https://api.aladhan.com/v1/calendarByCity/` +
-    //         tahun +
-    //         `/` +
-    //         bulan +
-    //         `?city=Tangerang&country=id&state=Banten&method=20`
-    //     );
-    //     setPraytime(response);
-    //   } catch (error) {
-    //     console.error(error.message);
-    //   }
-    // };
-
-    // getPrayersdata();
     AOS.init();
 
     const timer = setInterval(() => {
       setTime(moment().format("HH:mm:ss a"));
       setDate(moment().format("dddd, DD MMMM YYYY"));
-      setHijri(umalqura().format("d MMMM yyyy") + " H");
     });
 
     return function cleanup() {
       clearInterval(timer);
     };
   }, []);
-  // waktu solat
-  // let fajr = praytime.data?.[t]?.timings?.Fajr;
-  // let dzuhur = praytime.data?.[t]?.timings?.Dhuhr;
-  // let asar = praytime.data?.[t]?.timings?.Asr;
-  // let magrib = praytime.data?.[t]?.timings?.Maghrib;
-  // let isya = praytime.data?.[t]?.timings?.Isha;
 
   return (
     <>
@@ -124,9 +85,6 @@ export default function App() {
             </h1>
             <h2 className="text-l md:text-2xl uppercase text-white font-mono">
               {date}
-            </h2>
-            <h2 className="text-l hidden md:text-2xl uppercase text-white font-mono">
-              {hijri}
             </h2>
           </div>
         </div>

@@ -1,31 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
-// import axios from "axios";
+
 import { useState } from "react";
 import moment from "moment";
 import kota from "../data/kota";
-// import kabupaten from "../data/kabupaten";
-
 export default function Jadwal() {
-  // const [dHijri, setDHijri] = useState([]);
-
+  // eslint-disable-next-line no-unused-vars
   const [kalkot, setKalkot] = useState([kota]);
-  // const [kalkab, setKalkab] = useState([kabupaten]);
-  // useEffect(() => {
-  //   const getDateHijri = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://api.aladhan.com/v1/hijriCalendarByCity/1445/9?city=Tangerang&country=Indonesia&method=20"
-  //       );
-  //       setDHijri(response.data.data);
-  //     } catch (error) {
-  //       console.error(error.message);
-  //     }
-  //   };
-  //   getDateHijri();
-  // }, []);
-  // const removeWIB = (time) => {
-  //   return time.split(" (WIB)")[0];
-  // };
 
   return (
     <>
@@ -50,14 +30,15 @@ export default function Jadwal() {
               <tr
                 key={index}
                 className={
-                  moment().add(index, "days").format("YYYY-MM-DD") ==
-                  moment().format("YYYY-MM-DD")
+                  moment("2024-03-12")
+                    .add(index, "days")
+                    .format("YYYY-MM-DD") == moment().format("YYYY-MM-DD")
                     ? "bg-gray-100"
                     : "bg-white hover"
                 }
               >
                 <th>{kalkot[0][index].NO}</th>
-                <td>{moment().add(index, "days").format("ll")}</td>
+                <td>{moment("2024-03-12").add(index, "days").format("ll")}</td>
                 <td>{kalkot[0][index].IMSAK}</td>
                 <td>{kalkot[0][index].SUBUH}</td>
                 <td>{kalkot[0][index].ZUHUR}</td>

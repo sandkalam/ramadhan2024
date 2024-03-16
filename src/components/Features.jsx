@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 
 export default function CheckProgress() {
   const [puasa, setPuasa] = useState(
@@ -15,6 +16,7 @@ export default function CheckProgress() {
   );
 
   // Initialize daysOfRamadhan to 0
+  // eslint-disable-next-line no-unused-vars
   const [totalRamadhan, setTotalRamadhan] = useState(29);
 
   // Initialize total counts to 0
@@ -100,7 +102,15 @@ export default function CheckProgress() {
         </thead>
         <tbody>
           {Array.from({ length: totalRamadhan }, (_, i) => (
-            <tr key={i} className="hover">
+            <tr
+              key={i}
+              className={
+                moment("2024-03-12").add(i, "days").format("YYYY-MM-DD") ==
+                moment().format("YYYY-MM-DD")
+                  ? "bg-gray-100"
+                  : "bg-white hover"
+              }
+            >
               <td className="text-3xl font-bold">Hari Ke-{i + 1}</td>
               <td className="flex justify-between flex-col sm:w-2/3 w-full items-end ">
                 <label className="label cursor-pointer">
